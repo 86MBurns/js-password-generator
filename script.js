@@ -39,7 +39,12 @@ if( length >= 8 && length <= 128 ) {
 
   useSpecialCharaters = window.confirm("Do you want to use special characters?");
 
-  if()
+  if(useLowerCase || useCapital || useNunbers || useSpecialCharaters) {
+
+    if (useLowerCase){
+      
+    }
+  }
   //end fuction early
   return;
 }
