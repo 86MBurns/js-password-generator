@@ -1,6 +1,5 @@
 // what data dose my app need to work?
-// Assignment Code
-var generateBtn = document.querySelectorAll("#generate");
+
 
 
  
@@ -9,27 +8,25 @@ var generateBtn = document.querySelectorAll("#generate");
 
 //variables for all characters
 
-var numbers = ["0","1","2","3","4","5","6","7","8","9"];
 
-var upperCaseLetters= ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 
-var lowercaseLetters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 
-var specialCharacters = ["`","~","!","@","#","$","%","^","&","*","(",")","-","_","=","+","[","{","]","}",",","|",";",":","'","<",".",">","/","?"];
-
-var useableCharacters = [] ;
 
 function generatePassword() {
     
-
-
+var numbers = "1234567890".split("");
+var upperCaseLetters= "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+var lowerCaseLetters = "abcdefghijklmnopqrstuvwxyz".split("");
+var specialCharacters = "!@#$%^&*()".split("");
+var useableCharacters = [] ;
 
     // prompt user for passwordLength and store it in a variable
 var passwordLength;  
 var useNumbers; 
 var useUpperCase;
 var useLowerCase;
-var useSpecial;  
+var useSpecial;
+var password123 = "";  
 
 
 passwordLength = window.prompt("Choose number of characters from 8 to 128.");
@@ -58,49 +55,50 @@ passwordLength = window.prompt("Choose number of characters from 8 to 128.");
       
     };
 
-    if (useNumbers == true) {
+    if (useNumbers === true) {
         useableCharacters = useableCharacters.concat(numbers);
         
     }
-    if (useUpperCase == true) {
+    if (useUpperCase === true) {
         useableCharacters = useableCharacters.concat(upperCaseLetters);
         
     }
-    if (useLowerCase == true) {
-        useableCharacters = useableCharacters.concat(lowercaseLetters);
+    if (useLowerCase === true) {
+        useableCharacters = useableCharacters.concat(lowerCaseLetters);
         
     }
-    if (useSpecial == true) {
+    if (useSpecial === true) {
         useableCharacters = useableCharacters.concat(specialCharacters);
         
     }
     
-var finalPassword;
-
     for (var i = 0; i <= passwordLength; i++){
-    useableCharacters [Math.floor (Math.random() * useableCharacters.password)];
+    password123 += useableCharacters [Math.floor (Math.random() * useableCharacters.length)];
         
-
-   return password ;
+    }
+   return password123 ;
    }
 
   
     //prompt the user for special character and store in a variable
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat
+
+
+
+  // Assignment Code
+var generateBtn = document.querySelector("#generate");
+
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+
 }
 
-function writePassword(){
-    console.log("hello")
-    var password = generatePassword();
-    var passwordText= document.querySelector("#password");
-
-    passwordText.value = password;
-
-  }
-
-  //add event listenter to generate button
-generate.addEventListener("click", writePassword);
-  
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
 
 
 
